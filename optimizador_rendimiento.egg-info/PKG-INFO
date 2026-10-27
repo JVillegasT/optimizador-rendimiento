@@ -1,0 +1,50 @@
+Metadata-Version: 2.4
+Name: optimizador-rendimiento
+Version: 0.1.0
+Summary: API de optimización de consultas con métricas de rendimiento
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: fastapi>=0.110
+Requires-Dist: uvicorn[standard]>=0.29
+Requires-Dist: sqlalchemy[asyncio]>=2.0
+Requires-Dist: asyncpg>=0.29
+Requires-Dist: alembic>=1.13
+Requires-Dist: pydantic>=2.7
+Requires-Dist: pydantic-settings>=2.3
+Requires-Dist: python-dotenv>=1.0
+Requires-Dist: redis>=5.0
+Requires-Dist: faker>=25.0
+Provides-Extra: dev
+Requires-Dist: pytest>=8.2; extra == "dev"
+Requires-Dist: pytest-asyncio>=0.23; extra == "dev"
+Requires-Dist: pytest-cov>=4.1; extra == "dev"
+Requires-Dist: httpx>=0.27; extra == "dev"
+Requires-Dist: ruff>=0.4; extra == "dev"
+Requires-Dist: mypy>=1.10; extra == "dev"
+
+# Optimizador de Rendimiento API
+
+Proyecto de portafolio para demostrar optimización de consultas, métricas y CI/CD.
+
+## Stack
+- Python 3.11+ / FastAPI
+- PostgreSQL + SQLAlchemy 2.0 (async)
+- Redis (caché)
+- GitHub Actions (CI/CD)
+- pytest / ruff / mypy
+
+## Fases
+1. **Baseline** (anti-patrón intencional): N+1, índices faltantes, LIKE sin índice
+2. **Índices + EXPLAIN ANALYZE**
+3. **Arreglar N+1 con JOINs**
+4. **Caché con Redis**
+5. **CI/CD pipeline + benchmarks automatizados**
+
+## Levantar en local
+```bash
+docker run -d --name pg-opt -e POSTGRES_DB=optimizador -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 postgres:15
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+pip install -e ".[dev]"
+cp .env.example .env  # editar si hace falta
+uvicorn app.main:app --reload

@@ -1,0 +1,14 @@
+README.md
+pyproject.toml
+app/main.py
+app/api/productos.py
+app/core/config.py
+app/db/session.py
+app/models/producto.py
+app/schemas/producto.py
+app/services/producto_service.py
+optimizador_rendimiento.egg-info/PKG-INFO
+optimizador_rendimiento.egg-info/SOURCES.txt
+optimizador_rendimiento.egg-info/dependency_links.txt
+optimizador_rendimiento.egg-info/requires.txt
+optimizador_rendimiento.egg-info/top_level.txt
